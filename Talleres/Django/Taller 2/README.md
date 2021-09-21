@@ -53,7 +53,7 @@ En este punto, ya estás listo para trabajar en el proyecto.
 
 ## 3. Aplicación _checkout_
 
-Ahora, crearás una aplicación del proyecto django bajo el nombre __"checkout-#cedula"__. Es importante que coloques tu número de identificación para que al hacer el _pull request_ no haya conflicto al añadirlo al repositorio oficial. Recuerda también hacer la configuración en `settings.py`.
+Ahora, crearás una aplicación del proyecto django bajo el nombre __"checkout#cedula"__. Es importante que coloques tu número de identificación para que al hacer el _pull request_ no haya conflicto al añadirlo al repositorio oficial. Recuerda también hacer la configuración en `settings.py`.
 
 ## 4. Modelos CRUD
 
@@ -69,7 +69,7 @@ Construye los serializadores del proyecto.
 
 Crea las API's con base en la información que deseas que tus usuarios observen en el frontend. Para el carrito de compras, ten en cuenta lo siguiente: en el momento en que se crea el `CarritoCompras`, no tenemos certeza de que el usuario ya lo haya pagado; por lo que es necesario actualizar el atributo `pagado` una vez haya pagado a través de la pasarela de pagos. Como es necesario actualizar información, no es recomendable utilizar `viewsets.ModelViewSet`, sino `viewsets.ViewSet`.
 
-```
+```PYTHON
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
@@ -102,7 +102,7 @@ class CarritoComprasAPI(viewsets.ViewSet):
 
 Pero además, es recomendable tener en cuenta lo siguiente: cuando se crea el `CarritoCompras`, es porque el cliente ya ha elegidos __todos__ los artículos que desea comprar; por lo que si decides emplear `viewsets.ModelViewSet` el registro de cada artículo se hará de forma individual. Es decir, el frontend tendrá que hacer el registro de _un artículo a la vez_. Lo anterior no es práctico, por lo que deberíamos utilizar `viewset.ViewSet` para el registro de todos los artículos. Lo siguiente solucionaría este inconveniente:
 
-```
+```PYTHON
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
