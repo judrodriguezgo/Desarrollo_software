@@ -60,11 +60,12 @@ Sin embargo, para la clase `User` debemos tener una consideración adicional: po
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-class User (serializers.ModelSerializer):
+class UserSerial (serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = '__all__'
-        extra_kwargs = {'password':{'write_only':True}}
+        extra_kwargs = {'password':{'write_only':True}, "style":{'input_type': 'password'}}}
+        
 ```
 
 ## 5. Permisos de usuario
